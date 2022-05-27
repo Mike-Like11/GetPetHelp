@@ -43,9 +43,6 @@ class WorkerTaskAdapter(context: Context, workerList: List<Worker>) :
         holder.itemView.task_worker_rating.rating = worker.rating.toFloat()
         val imageLoader: ImageLoader =  ImageLoader.getInstance()
         imageLoader.displayImage(worker.shortUserInfo?.avatarUrl, holder.itemView.task_worker_avatar)
-        holder.itemView.choose_worker.setOnClickListener{
-
-        }
     }
 
     override fun getItemCount(): Int {

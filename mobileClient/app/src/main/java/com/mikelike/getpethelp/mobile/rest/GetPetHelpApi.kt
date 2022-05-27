@@ -1,5 +1,6 @@
 package com.mikelike.getpethelp.mobile.rest
 
+import com.android.volley.Response
 import com.mikelike.getpethelp.mobile.viewModel.CreateCVViewModel
 import com.mikelike.getpethelp.mobile.viewModel.CreateTaskViewModel
 import com.mikelike.getpethelp.mobile.viewModel.LoginViewModel
@@ -15,4 +16,5 @@ interface GetPetHelpApi {
     fun createTask(taskInput: CreateTaskViewModel.TaskInput)
     fun createCV(workerInfoInput: CreateCVViewModel.WorkerInfoInput)
     fun getCurrentUserTasks()
+    fun addResponseTOTask(id:Long)
 }

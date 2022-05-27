@@ -49,17 +49,8 @@
                 android:id="@+id/task_worker_rating"
                 android:numStars="5"
                 android:clickable="false"
-                style="?android:attr/ratingBarStyleSmall"
+                style="?android:attr/ratingBarStyleIndicator"
                 android:layout_height="match_parent"/>
         </LinearLayout>
-        <Button
-            android:id="@+id/choose_worker"
-            android:layout_weight="2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@android:color/holo_green_light"
-            android:text="Выбрать"
-            android:textColor="#FFF" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

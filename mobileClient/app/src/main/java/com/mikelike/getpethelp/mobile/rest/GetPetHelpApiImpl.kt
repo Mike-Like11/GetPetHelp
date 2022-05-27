@@ -326,4 +326,23 @@ class GetPetHelpApiImpl(context: Context?) : GetPetHelpApi {
         request.retryPolicy = DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         queue.add(request)
     }
+
+    override fun addResponseTOTask(id: Long) {
+        val queue = Volley.newRequestQueue(context)
+        val url = "$BASE_URL/api/tasks/$id/respond"
+        val request = object : JsonArrayRequest(Request.Method.GET, url,null,
+            { response ->
+            },
+            { volleyError ->  }) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers: MutableMap<String, String> = HashMap()
+                val sharedpreferences = context.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
+                val accesstoken = sharedpreferences.getString("key","")
+                headers["Authorization"] = "Bearer $accesstoken"
+                return headers
+            }
+        }
+        request.retryPolicy = DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+        queue.add(request)
+    }
 }

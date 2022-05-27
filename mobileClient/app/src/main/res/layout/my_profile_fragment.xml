@@ -217,6 +217,8 @@
 
                     <TextView
                         style="@style/MyBigtext"
+                        android:id="@+id/worker_profile"
+                        android:visibility="invisible"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

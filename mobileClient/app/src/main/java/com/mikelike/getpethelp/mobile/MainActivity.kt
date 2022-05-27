@@ -90,6 +90,9 @@ class MainActivity : AppCompatActivity() {
             is CreateCVFragment, is CreateTaskFragment -> supportFragmentManager.beginTransaction()
                 .replace(R.id.flFragment, MyProfileFragment())
                 .addToBackStack("tag").commit()
+            is FullTaskInfoFragment -> supportFragmentManager.beginTransaction()
+                .replace(R.id.flFragment, TasksFragment())
+                .addToBackStack("tag").commit()
             else -> super.onBackPressed()
         }
 

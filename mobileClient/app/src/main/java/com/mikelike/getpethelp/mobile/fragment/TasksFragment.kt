@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.mikelike.getpethelp.mobile.adapter.TaskAdapter
 import com.mikelike.getpethelp.mobile.databinding.TasksFragmentBinding
@@ -23,6 +24,7 @@ class TasksFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         viewModel = ViewModelProvider(this).get(TasksViewModel::class.java)
         viewModel.getTasks()
         _binding = TasksFragmentBinding.inflate(layoutInflater, container, false)

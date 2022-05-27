@@ -57,6 +57,7 @@ class MyProfileFragment : Fragment() {
             binding.allMyTasks.adapter = TaskInfoProfileAdapter(requireActivity(),it)
         }
         viewModel.worker.observeForever {
+            binding.workerProfile.visibility = View.VISIBLE
             binding.workerExperience.text = it.workerInfo?.experience
             binding.workerPreferences.text = it.workerInfo?.preferences
         }

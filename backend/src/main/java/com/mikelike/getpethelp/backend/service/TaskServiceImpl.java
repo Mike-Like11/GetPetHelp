@@ -16,8 +16,8 @@ public class TaskServiceImpl implements TaskService {
     private TaskRepository taskRepository;
     @Autowired
     private UserService userService;
-//    @Autowired
-//    private WorkerService workerService;
+    @Autowired
+    private WorkerService workerService;
 
     @Override
     public List<Task> getAll() {
@@ -34,10 +34,12 @@ public class TaskServiceImpl implements TaskService {
     public Task addWorker(Long id) {
         System.out.println(id);
         Optional<Task> task = taskRepository.findById(id);
-//        if(task.isPresent()){
-//            task.get().getWorkerInfoList().add(workerService.getCurrentWorker());
-//            return taskRepository.save(task.get());
-//        }
+        if(task.isPresent()){
+            if(!task.get().getWorkerInfoList().contains(workerService.getCurrentWorker())) {
+                task.get().getWorkerInfoList().add(workerService.getCurrentWorker());
+            }
+            return taskRepository.save(task.get());
+        }
         return null;
     }
 
@@ -45,10 +47,10 @@ public class TaskServiceImpl implements TaskService {
     public Task chooseWorker(Long id, Long workerId) {
         System.out.println(workerId);
         Optional<Task> task = taskRepository.findById(id);
-//        if(task.isPresent()){
-//            task.get().setWorker(workerService.findById(workerId));
-//            return taskRepository.save(task.get());
-//        }
+        if(task.isPresent()){
+            task.get().setWorker(workerService.findById(workerId));
+            return taskRepository.save(task.get());
+        }
         return null;
     }
 

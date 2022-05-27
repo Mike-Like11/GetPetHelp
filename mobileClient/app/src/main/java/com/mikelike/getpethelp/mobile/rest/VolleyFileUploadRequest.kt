@@ -1,5 +1,6 @@
 package com.mikelike.getpethelp.mobile.rest
 
+import android.util.Log
 import com.android.volley.*
 import com.android.volley.toolbox.HttpHeaderParser
 import java.io.*
@@ -78,7 +79,8 @@ open class VolleyFileUploadRequest(
         try {
             params.forEach {
                 dataOutputStream.writeBytes(divider + boundary + ending)
-                dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"${it.key}\"$ending")
+                Log.d("d",it.value+ending)
+                dataOutputStream.writeBytes("Content-Disposition: form-data;charset=UTF-8; name=\"${it.key}\"$ending")
                 dataOutputStream.writeBytes(ending)
                 dataOutputStream.writeBytes(it.value + ending)
             }

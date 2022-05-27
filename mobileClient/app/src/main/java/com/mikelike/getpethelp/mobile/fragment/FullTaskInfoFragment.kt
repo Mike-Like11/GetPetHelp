@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -41,6 +43,7 @@ class FullTaskInfoFragment : Fragment(), OnMapReadyCallback {
         task = requireArguments().getSerializable("task") as Task
         _binding = FragmentFullTaskInfoBinding.inflate(layoutInflater, container, false)
         val view = binding.root
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.fullTaskDesc.text = task.taskInfo?.description
         binding.fullTaskName.text = task.taskInfo?.name
         binding.fullTaskUserName.text = task.user?.firstName.toString().plus(" ").plus(task.user?.lastName.toString())
@@ -48,7 +51,8 @@ class FullTaskInfoFragment : Fragment(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         binding.uploadData.setOnClickListener {
-
+                GetPetHelpApiImpl(context).addResponseTOTask(task.id)
+            Toast.makeText(context,"Спасибо что откликнулись на данную заявку, заказчик свяжется с вами",Toast.LENGTH_LONG).show()
         }
         val imageLoader: ImageLoader =  ImageLoader.getInstance()
         imageLoader.displayImage(task.user?.avatarUrl, binding.taskAvatar)
