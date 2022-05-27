@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.CreateTaskFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="10dp">
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="10dp"
+            android:elevation="20dp"
+            app:cardCornerRadius="10dp"
+            android:padding="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_hello"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/text_please"
+                    android:padding="16dp"
+                    android:text="Создайте задание"
+                    android:textAlignment="center"
+                    style="@style/MyTheBigtext"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Название"
+                    android:id="@+id/task_name"
+                    android:layout_margin="10dp"
+                    android:padding="16dp"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:autofillHints="Николай"
+                    android:elevation="2dp"
+                    android:background="@drawable/bottomnavshape"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Описание"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:id="@+id/task_desc"
+                    android:layout_margin="10dp"
+                    android:lines="5"
+                    android:padding="16dp"
+                    android:elevation="2dp"
+                    android:background="@drawable/bottomnavshape"
+                    android:autofillHints="100"
+                    />
+                <Button
+                    android:id="@+id/btnPick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="10dp"
+                    android:text="Выбрать дату и время" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Дата и время"
+                    android:enabled="false"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:id="@+id/task_time"
+                    android:layout_margin="10dp"
+                    android:padding="16dp"
+                    android:elevation="2dp"
+                    android:background="@drawable/bottomnavshape"
+                    android:autofillHints="100"
+                    />
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="40dp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/create_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#fed053"
+                    android:text="Создать задание"
+                    />
+            </LinearLayout>
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

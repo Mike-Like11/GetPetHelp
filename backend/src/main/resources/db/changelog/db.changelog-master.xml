@@ -1,0 +1,20 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Запускаем поочереди скрипты. Последовательность запуска важна, т.к. у таблиц есть зависимости -->
+
+    <!--<includeAll path="db.changelog/1.0"/>-->
+    <include file="db/changelog/1.0/full_user_info.xml"/>
+    <include file="db/changelog/1.0/short_user_info.xml"/>
+    <include file="db/changelog/1.0/links.xml"/>
+    <include file="db/changelog/1.0/task.xml"/>
+    <include file="db/changelog/1.0/task_info.xml"/>
+    <include file="db/changelog/1.0/task_worker_info_list.xml"/>
+    <include file="db/changelog/1.0/users.xml"/>
+    <include file="db/changelog/1.0/worker.xml"/>
+    <include file="db/changelog/1.0/worker_info.xml"/>
+
+</databaseChangeLog>

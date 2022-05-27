@@ -1,0 +1,133 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="m089 (generated)" id="1653654341304-2">
+        <createTable tableName="hibernate_sequence">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="m089 (generated)" id="1653654341304-3">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="review"/>
+            </not>
+        </preConditions>
+    <createTable tableName="review">
+        <column name="id" type="BIGINT">
+            <constraints nullable="false"/>
+        </column>
+        <column name="date" type="VARCHAR(255)"/>
+        <column name="message" type="VARCHAR(255)"/>
+        <column name="rating" type="DOUBLE"/>
+        <column name="user_id" type="BIGINT">
+            <constraints nullable="false"/>
+        </column>
+        <column name="worker_id" type="BIGINT"/>
+    </createTable>
+    </changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-11">
+    <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="review"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-12">
+<addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="task"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-13">
+<addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="task_info"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-14">
+<addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="worker"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-15">
+<addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="worker_info"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-16">
+<createIndex indexName="FK1lmxm4hd92kjj2kt6inbs6cjr" tableName="task">
+    <column name="user_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-17">
+<createIndex indexName="FK3j6873u3vsoga8kaux5930tlf" tableName="task_worker_info_list">
+    <column name="task_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-18">
+<createIndex indexName="FKamcbrv3a62ymyqn6qta4p42qk" tableName="short_user_info">
+    <column name="user_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-19">
+<createIndex indexName="FKbowucqslhv4ye3r52dvhycd4n" tableName="full_user_info">
+    <column name="user_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-20">
+<createIndex indexName="FKbq3slersds3ou0252veskmo41" tableName="worker_info">
+    <column name="worker_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-21">
+<createIndex indexName="FKc33pi8p8m5tgdsxrqg0u1jpk9" tableName="review">
+    <column name="worker_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-22">
+<createIndex indexName="FKer9mcdyqf63005umklqiv1kia" tableName="task_info">
+    <column name="task_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-23">
+<createIndex indexName="FKg0hfmmf6bc7vj7dai4m02clpt" tableName="task_worker_info_list">
+    <column name="worker_info_list_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-24">
+<createIndex indexName="FKmepbqcmfqsja2564rd2v52py9" tableName="worker">
+    <column name="user_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-25">
+<createIndex indexName="FKqn9llutcpc2bbicat33bh9jrp" tableName="task">
+    <column name="worker_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-26">
+<createIndex indexName="FKs0v1v3ccs6ka3ek4x1fw020s" tableName="review">
+    <column name="user_id"/>
+</createIndex>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-27">
+<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="task" constraintName="FK1lmxm4hd92kjj2kt6inbs6cjr" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="short_user_info"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-28">
+<addForeignKeyConstraint baseColumnNames="task_id" baseTableName="task_worker_info_list" constraintName="FK3j6873u3vsoga8kaux5930tlf" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="task"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-29">
+<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="short_user_info" constraintName="FKamcbrv3a62ymyqn6qta4p42qk" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="users"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-30">
+<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="full_user_info" constraintName="FKbowucqslhv4ye3r52dvhycd4n" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="users"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-31">
+<addForeignKeyConstraint baseColumnNames="worker_id" baseTableName="worker_info" constraintName="FKbq3slersds3ou0252veskmo41" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="worker"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-32">
+<addForeignKeyConstraint baseColumnNames="worker_id" baseTableName="review" constraintName="FKc33pi8p8m5tgdsxrqg0u1jpk9" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="worker"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-33">
+<addForeignKeyConstraint baseColumnNames="task_id" baseTableName="task_info" constraintName="FKer9mcdyqf63005umklqiv1kia" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="task"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-34">
+<addForeignKeyConstraint baseColumnNames="worker_info_list_id" baseTableName="task_worker_info_list" constraintName="FKg0hfmmf6bc7vj7dai4m02clpt" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="worker"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-35">
+<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="worker" constraintName="FKmepbqcmfqsja2564rd2v52py9" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="short_user_info"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-36">
+<addForeignKeyConstraint baseColumnNames="worker_id" baseTableName="task" constraintName="FKqn9llutcpc2bbicat33bh9jrp" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="worker"/>
+</changeSet>
+<changeSet author="m089 (generated)" id="1653654341304-37">
+<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="review" constraintName="FKs0v1v3ccs6ka3ek4x1fw020s" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="short_user_info"/>
+</changeSet>
+</databaseChangeLog>
