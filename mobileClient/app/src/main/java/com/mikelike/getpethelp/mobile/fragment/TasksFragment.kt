@@ -1,7 +1,11 @@
 package com.mikelike.getpethelp.mobile.fragment
 
+import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +33,14 @@ class TasksFragment : Fragment() {
         viewModel.getTasks()
         _binding = TasksFragmentBinding.inflate(layoutInflater, container, false)
         val view = binding.root
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Cписок заданий"
+        val text: Spannable = SpannableString((requireActivity() as AppCompatActivity).supportActionBar?.title)
+        text.setSpan(
+            ForegroundColorSpan(Color.rgb(254,208,83)),
+            0,
+            text.length,
+            Spannable.SPAN_INCLUSIVE_INCLUSIVE
+        )
         viewModel.loading.observeForever {
             binding.progressDialog.isVisible = it
         }

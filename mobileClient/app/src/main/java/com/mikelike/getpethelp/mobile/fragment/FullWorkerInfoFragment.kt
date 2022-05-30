@@ -23,6 +23,7 @@ class FullWorkerInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         worker = requireArguments().getSerializable("worker") as Worker
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         _binding = FragmentFullWorkerInfoBinding.inflate(layoutInflater, container, false)
         val view = binding.root
         binding.fullWorkerExperience.text = worker.workerInfo?.experience

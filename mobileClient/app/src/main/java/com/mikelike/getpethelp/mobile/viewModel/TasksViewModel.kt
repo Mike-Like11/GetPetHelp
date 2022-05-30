@@ -24,7 +24,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
             api.getAllTasks()
             withContext(viewModelScope.coroutineContext){
                 tasks.value = TASK_LIST
-                if(TASK_LIST.size>0){
+                if(tasks.value!!.size>0){
                     loading.value = false
                 }
             }

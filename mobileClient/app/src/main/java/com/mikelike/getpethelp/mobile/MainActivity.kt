@@ -93,6 +93,9 @@ class MainActivity : AppCompatActivity() {
             is FullTaskInfoFragment -> supportFragmentManager.beginTransaction()
                 .replace(R.id.flFragment, TasksFragment())
                 .addToBackStack("tag").commit()
+            is FullWorkerInfoFragment -> supportFragmentManager.beginTransaction()
+                .replace(R.id.flFragment, WorkersFragment())
+                .addToBackStack("tag").commit()
             else -> super.onBackPressed()
         }
 

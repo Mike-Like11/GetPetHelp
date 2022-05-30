@@ -63,6 +63,12 @@ class RegistrationFragment : Fragment() {
         binding.regEmail.doAfterTextChanged {
             vm.email.value = it.toString()
         }
+        binding.textQuestion.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.flFragment,LoginFragment())
+                commit()
+            }
+        }
         binding.createAccount.setOnClickListener{
             if(binding.PreviewImage.isVisible) {
                 vm.avatar.value = binding.PreviewImage.drawable?.toBitmap()

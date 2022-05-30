@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.mikelike.getpethelp.mobile.MainActivity
 import com.mikelike.getpethelp.mobile.R
+import com.mikelike.getpethelp.mobile.adapter.getAddress
 import com.mikelike.getpethelp.mobile.databinding.FragmentCreateTaskBinding
 import com.mikelike.getpethelp.mobile.databinding.FragmentFullTaskInfoBinding
 import com.mikelike.getpethelp.mobile.domain.Task
@@ -47,6 +48,10 @@ class FullTaskInfoFragment : Fragment(), OnMapReadyCallback {
         binding.fullTaskDesc.text = task.taskInfo?.description
         binding.fullTaskName.text = task.taskInfo?.name
         binding.fullTaskUserName.text = task.user?.firstName.toString().plus(" ").plus(task.user?.lastName.toString())
+        binding.taskLocation.text = getAddress(LatLng(task.taskInfo?.latitude!!,
+            task.taskInfo?.longitude!!
+        ), requireContext()
+        )
         val mapFragment: SupportMapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)

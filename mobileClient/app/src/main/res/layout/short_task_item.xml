@@ -40,6 +40,7 @@
                 android:layout_weight="3"
                 android:text="Купить корм для собаки"
                 android:layout_width="0dp"
+                android:textColor="#fed053"
                 android:layout_height="match_parent"
                 android:textAppearance="?attr/textAppearanceListItem"
                 tools:ignore="DuplicateIds"

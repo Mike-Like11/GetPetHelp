@@ -1,6 +1,11 @@
 package com.mikelike.getpethelp.mobile.fragment
 
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +46,14 @@ class MyProfileFragment : Fragment() {
         setHasOptionsMenu(true)
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         viewModel.getUserInfo()
-        requireActivity().title = "Мой профиль"
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Мой профиль"
+        val text: Spannable = SpannableString((requireActivity() as AppCompatActivity).supportActionBar?.title)
+        text.setSpan(
+            ForegroundColorSpan(Color.rgb(254,208,83)),
+            0,
+            text.length,
+            Spannable.SPAN_INCLUSIVE_INCLUSIVE
+        )
         viewModel.loading.observeForever {
             binding.container.isVisible  = it.not()
         }
@@ -55,6 +67,16 @@ class MyProfileFragment : Fragment() {
         }
         viewModel.myTasks.observeForever {
             binding.allMyTasks.adapter = TaskInfoProfileAdapter(requireActivity(),it)
+        }
+        binding.deleteAccount.setOnClickListener {
+            val sharedPreferences = requireActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
+            val edit = sharedPreferences.edit()
+            edit.clear()
+            edit.apply()
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                replace(R.id.flFragment,LoginFragment())
+                commit()
+            }
         }
         viewModel.worker.observeForever {
             binding.workerProfile.visibility = View.VISIBLE

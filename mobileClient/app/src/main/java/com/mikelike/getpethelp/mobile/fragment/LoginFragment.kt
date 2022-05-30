@@ -70,10 +70,4 @@ class LoginFragment : Fragment() {
         return view
     }
 
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//        viewModel = ViewModelProvider(this).get(MyProfileViewModel::class.java)
-//        // TODO: Use the ViewModel
-//    }
-
 }
